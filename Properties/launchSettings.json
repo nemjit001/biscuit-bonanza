@@ -1,0 +1,13 @@
+{
+  "profiles": {
+	"Biscuit Bonanza": {
+	  "commandName": "Project"
+	},
+	"Game": {
+	  "commandName": "Executable",
+	  "executablePath": "%GODOT4%",
+	  "workingDirectory": ".",
+	  "nativeDebugging": true
+	}
+  }
+}
