@@ -3,6 +3,7 @@ using System;
 
 public partial class Biscuits : Node3D
 {
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,11 +12,6 @@ public partial class Biscuits : Node3D
 		pickupArea.BodyExited += OnBodyExited;
 
 		GD.Print("Biscuits Ready!");
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 
 	public void OnBodyEntered(Node3D body)
@@ -27,4 +23,10 @@ public partial class Biscuits : Node3D
     {
         GD.Print("Left Biscuits range!");
     }
+
+	public void OnActivate()
+	{
+		// TOOD(nemjit001): Signal game manager that we have collected the biscuits!
+		QueueFree();
+	}
 }

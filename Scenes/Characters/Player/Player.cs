@@ -7,6 +7,10 @@ public partial class Player : CharacterBody3D
     const string MOVE_RIGHT		= "move_right";
     const string MOVE_FORWARD	= "move_forward";
     const string MOVE_BACK		= "move_back";
+    const string ACTIVATE       = "activate";
+
+    [Signal]
+    public delegate void ActivateObjectEventHandler();
 
     [Export] public float Gravity = 9.81F;
     [Export] public float MoveSpeed = 500.0F;
@@ -22,14 +26,12 @@ public partial class Player : CharacterBody3D
 
     public override void _Process(double delta)
     {
-        // Get current movement input
-        _CurrMoveDirection = Vector3.Zero;
-        _CurrMoveDirection.X -= Input.GetActionStrength(MOVE_LEFT);
-        _CurrMoveDirection.X += Input.GetActionStrength(MOVE_RIGHT);
-        _CurrMoveDirection.Z -= Input.GetActionStrength(MOVE_FORWARD);
-        _CurrMoveDirection.Z += Input.GetActionStrength(MOVE_BACK);
-        if (_CurrMoveDirection.LengthSquared() > 1.0) {
-            _CurrMoveDirection = _CurrMoveDirection.Normalized();
+        // Get current move direction
+        _CurrMoveDirection = GetMoveDirection();
+
+        // Handle activation event
+        if (Input.IsActionJustPressed(ACTIVATE)) {
+            EmitSignal(SignalName.ActivateObject);
         }
 
         // Update pivot rotation
@@ -48,5 +50,20 @@ public partial class Player : CharacterBody3D
 
         // Update position
         MoveAndSlide();
+    }
+
+    private Vector3 GetMoveDirection()
+    {
+        // Get current movement input
+        Vector3 MoveDirection = Vector3.Zero;
+        MoveDirection.X -= Input.GetActionStrength(MOVE_LEFT);
+        MoveDirection.X += Input.GetActionStrength(MOVE_RIGHT);
+        MoveDirection.Z -= Input.GetActionStrength(MOVE_FORWARD);
+        MoveDirection.Z += Input.GetActionStrength(MOVE_BACK);
+        if (MoveDirection.LengthSquared() > 1.0) {
+            MoveDirection = MoveDirection.Normalized();
+        }
+
+        return MoveDirection;
     }
 }
