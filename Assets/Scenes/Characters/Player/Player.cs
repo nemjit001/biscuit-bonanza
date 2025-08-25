@@ -57,7 +57,7 @@ public partial class Player : CharacterBody3D
 
     public void CollectBiscuits(Biscuits biscuits)
     {
-        _ItemScene = ResourceLoader.Load<PackedScene>(biscuits.SceneFilePath);
+        _ItemScene = GD.Load<PackedScene>(biscuits.SceneFilePath);
     }
 
     public bool HasBiscuits()

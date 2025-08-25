@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=3 uid="uid://5rhmhkb7kfd7"]
+
+[ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Scenes/environment.tres" id="1_bhd3g"]
+[ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="2_um7u5"]
+[ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Assets/Scenes/Environment/Biscuits/biscuits.tscn" id="3_kxhqp"]
+[ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="4_f7mx1"]
+[ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
+[ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/pause_menu.tscn" id="6_bhd3g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
+size = Vector3(20, 2, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+size = Vector3(20, 2, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo1nx"]
+size = Vector3(20, 5, 1)
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 4, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_bhd3g")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_7u77a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_jjgbg")
+skeleton = NodePath("../..")
+
+[node name="WallFront" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallFront"]
+mesh = SubResource("BoxMesh_bo1nx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallFront"]
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="WallBack" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallBack"]
+mesh = SubResource("BoxMesh_bo1nx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBack"]
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="WallRight" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallRight"]
+mesh = SubResource("BoxMesh_bo1nx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="WallLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
+mesh = SubResource("BoxMesh_bo1nx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="Player" parent="." instance=ExtResource("2_um7u5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Biscuits" parent="." instance=ExtResource("3_kxhqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.522512, 0)
+
+[node name="FamilyMember" parent="." instance=ExtResource("4_f7mx1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+
+[node name="DogHouse" parent="." instance=ExtResource("5_sbayc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_bhd3g")]

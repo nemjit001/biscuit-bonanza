@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqpr0plnbjtl3"]
+
+[ext_resource type="Script" uid="uid://bs6wcxsbjtfdj" path="res://Assets/Scenes/UI/MainMenu.cs" id="1_lmbrl"]
+[ext_resource type="PackedScene" uid="uid://5rhmhkb7kfd7" path="res://Assets/Scenes/demo_scene.tscn" id="2_kl2x8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lmbrl")
+GameScene = ExtResource("2_kl2x8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -33.0
+offset_right = 100.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="OnQuitPressed"]
