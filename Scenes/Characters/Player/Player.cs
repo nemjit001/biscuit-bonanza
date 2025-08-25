@@ -8,13 +8,15 @@ public partial class Player : CharacterBody3D
     const string MOVE_FORWARD	= "move_forward";
     const string MOVE_BACK		= "move_back";
     const string ACTIVATE       = "activate";
+    const string DROP_ITEM      = "drop_item";
 
     [Signal]
-    public delegate void ActivateObjectEventHandler();
+    public delegate void ActivateObjectEventHandler(Player player);
 
     [Export] public float Gravity = 9.81F;
     [Export] public float MoveSpeed = 500.0F;
 
+    PackedScene _ItemScene = null;
     Vector3 _CurrMoveDirection = Vector3.Zero;
     Node3D _Pivot = null;
 
@@ -31,15 +33,16 @@ public partial class Player : CharacterBody3D
 
         // Handle activation event
         if (Input.IsActionJustPressed(ACTIVATE)) {
-            EmitSignal(SignalName.ActivateObject);
+            EmitSignal(SignalName.ActivateObject, this);
         }
 
-        // Update pivot rotation
-        if (_CurrMoveDirection != Vector3.Zero)
-        {
-            Vector3 MoveTarget = Position + _CurrMoveDirection;
-            _Pivot.LookAt(MoveTarget, Vector3.Up);
+        // Handle biscuit dropping
+        if (Input.IsActionJustPressed(DROP_ITEM)) {
+            DropBiscuits();
         }
+
+        // Update player rotation
+        UpdateRotation();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -50,6 +53,32 @@ public partial class Player : CharacterBody3D
 
         // Update position
         MoveAndSlide();
+    }
+
+    public void CollectBiscuits(Biscuits biscuits)
+    {
+        _ItemScene = ResourceLoader.Load<PackedScene>(biscuits.SceneFilePath);
+    }
+
+    public bool HasBiscuits()
+    {
+        return _ItemScene != null;
+    }
+
+    public void DropBiscuits()
+    {
+        if (!HasBiscuits()) {
+            return;
+        }
+
+        Biscuits biscuits = _ItemScene.Instantiate<Biscuits>();
+        biscuits.Position = Position;
+
+        Node3D root = GetOwner<Node3D>();
+        root.AddChild(biscuits);
+
+        GD.Print("Biscuits Dropped!");
+        _ItemScene = null;
     }
 
     private Vector3 GetMoveDirection()
@@ -65,5 +94,14 @@ public partial class Player : CharacterBody3D
         }
 
         return MoveDirection;
+    }
+
+    private void UpdateRotation()
+    {
+        if (_CurrMoveDirection != Vector3.Zero)
+        {
+            Vector3 MoveTarget = Position + _CurrMoveDirection;
+            _Pivot.LookAt(MoveTarget, Vector3.Up);
+        }
     }
 }

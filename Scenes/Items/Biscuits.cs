@@ -3,43 +3,40 @@ using System;
 
 public partial class Biscuits : Node3D
 {
-	public bool _CanActivate = false;
+	const string LOUIE_GROUP = "louie";
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Area3D pickupArea = GetNode<Area3D>("PickupArea");
-		pickupArea.BodyEntered += OnBodyEntered;
-		pickupArea.BodyExited += OnBodyExited;
+		Area3D pickup = GetNode<Area3D>("PickupArea");
+		pickup.BodyEntered += OnBodyEntered;
+		pickup.BodyExited += OnBodyExited;
 
 		GD.Print("Biscuits Ready!");
 	}
 
-	public void Initialize(Player player)
+	public void OnBodyEntered(Node3D node)
 	{
-		player.ActivateObject += OnActivateObject;
+		if (node.IsInGroup(LOUIE_GROUP))
+		{
+			Player player = (Player)node;
+			player.ActivateObject += OnActivateObject;
+		}
 	}
 
-	public void OnBodyEntered(Node3D body)
-	{
-		_CanActivate = true;
-        GD.Print("Entered Biscuits range!");
-	}
-
-    public void OnBodyExited(Node3D body)
+    public void OnBodyExited(Node3D node)
     {
-		_CanActivate = false;
-        GD.Print("Left Biscuits range!");
+        if (node.IsInGroup(LOUIE_GROUP))
+        {
+            Player player = (Player)node;
+			player.ActivateObject -= OnActivateObject;
+        }
     }
 
-	public void OnActivateObject()
-	{
-		if (!_CanActivate) {
-			return;
-		}
-
-		// TOOD(nemjit001): Signal player that we have collected the biscuits and update player state
-		GD.Print("Biscuits Collected!");
+    public void OnActivateObject(Player player)
+    {
+        player.CollectBiscuits(this);
+        GD.Print($"Biscuits Collected!");
 		QueueFree();
 	}
 }

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://5rhmhkb7kfd7"]
+[gd_scene load_steps=8 format=3 uid="uid://5rhmhkb7kfd7"]
 
 [ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Scenes/environment.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Scenes/Characters/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="Script" uid="uid://i8oloyf226da" path="res://Scenes/BiscuitManager.cs" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Scenes/Items/biscuits.tscn" id="4_jjvhh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
@@ -74,6 +73,5 @@ shape = SubResource("BoxShape3D_bo1nx")
 [node name="Player" parent="." instance=ExtResource("1_jjgbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="BiscuitManager" type="Node3D" parent="."]
-script = ExtResource("3_8gbba")
-BiscuitsScene = ExtResource("4_jjvhh")
+[node name="Biscuits" parent="." instance=ExtResource("4_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.522512, 0)

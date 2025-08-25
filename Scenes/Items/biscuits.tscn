@@ -17,8 +17,8 @@ mesh = SubResource("BoxMesh_wufw1")
 surface_material_override/0 = ExtResource("1_u5ve3")
 
 [node name="PickupArea" type="Area3D" parent="."]
-collision_layer = 6
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
 shape = SubResource("SphereShape3D_rcnya")
