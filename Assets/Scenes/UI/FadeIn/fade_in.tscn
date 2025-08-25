@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://iwuqbaqog2d5"]
 
-[ext_resource type="Script" uid="uid://ihhoortpdbup" path="res://Assets/Scenes/UI/FadeIn.cs" id="1_7vtqq"]
+[ext_resource type="Script" uid="uid://ihhoortpdbup" path="res://Assets/Scenes/UI/FadeIn/FadeIn.cs" id="1_7vtqq"]
 [ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="2_anvle"]
 
 [sub_resource type="Animation" id="Animation_anvle"]
 resource_name = "fade"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,10 +13,10 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 2),
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rh4hh"]
@@ -64,4 +65,5 @@ libraries = {
 }
 
 [node name="FadeTimer" type="Timer" parent="."]
+wait_time = 0.3
 autostart = true
