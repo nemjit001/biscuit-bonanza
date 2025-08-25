@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://5rhmhkb7kfd7"]
+[gd_scene load_steps=14 format=3 uid="uid://5rhmhkb7kfd7"]
 
 [ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Scenes/environment.tres" id="1_bhd3g"]
 [ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="2_um7u5"]
+[ext_resource type="PackedScene" uid="uid://iwuqbaqog2d5" path="res://Assets/Scenes/UI/fade_in.tscn" id="3_f7mx1"]
 [ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Assets/Scenes/Environment/Biscuits/biscuits.tscn" id="3_kxhqp"]
 [ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="4_f7mx1"]
 [ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
@@ -31,6 +32,8 @@ geometry_source_geometry_mode = 1
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_bhd3g")]
 theme = ExtResource("7_um7u5")
+
+[node name="FadeIn" parent="CanvasLayer" instance=ExtResource("3_f7mx1")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 4, 0)
