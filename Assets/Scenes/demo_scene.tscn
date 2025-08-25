@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5rhmhkb7kfd7"]
+[gd_scene load_steps=12 format=3 uid="uid://5rhmhkb7kfd7"]
 
 [ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Scenes/environment.tres" id="1_bhd3g"]
 [ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="2_um7u5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="4_f7mx1"]
 [ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
 [ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/PauseMenu/pause_menu.tscn" id="6_bhd3g"]
+[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="7_um7u5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(20, 2, 20)
@@ -86,4 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
 [node name="DogHouse" parent="." instance=ExtResource("5_sbayc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_bhd3g")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_bhd3g")]
+theme = ExtResource("7_um7u5")

@@ -5,7 +5,10 @@ public partial class PauseMenu : Control
 {
     const string OPEN_MENU = "open_menu";
 
-	MarginContainer _PauseMenuContainer = null;
+    [Export(PropertyHint.File, "*.tscn,*.scn")]
+    public string MainMenuScenePath;
+
+    MarginContainer _PauseMenuContainer = null;
 
     public override void _Ready()
 	{
@@ -22,36 +25,47 @@ public partial class PauseMenu : Control
 		}
     }
 
-	public void TogglePause()
+	void TogglePause()
 	{
 		SceneTree tree = GetTree();
-		tree.Paused = !tree.Paused;
 		if (tree.Paused) {
-            _PauseMenuContainer.Show();
+            UnPause();
 		}
 		else {
-            _PauseMenuContainer.Hide();
+            Pause();
 		}
 	}
 
-	public void OnClosePressed()
+    void Pause()
+    {
+        SceneTree tree = GetTree();
+        tree.Paused = true;
+
+        _PauseMenuContainer.Show();
+    }
+
+    void UnPause()
+    {
+        SceneTree tree = GetTree();
+        tree.Paused = false;
+
+        _PauseMenuContainer.Hide();
+    }
+
+    public void OnClosePressed()
 	{
-		TogglePause();
+        UnPause();
 	}
 
     public void OnQuitToMenuPressed()
     {
-		SceneTree tree = GetTree();
-		tree.Paused = false;
-
-		GameManager.Instance.LoadScene("res://Assets/Scenes/main.tscn");
+        UnPause();
+		GameManager.Instance.LoadScene(MainMenuScenePath);
     }
 
     public void OnQuitPressed()
 	{
-        SceneTree tree = GetTree();
-        tree.Paused = false;
-
+        UnPause();
         GameManager.Instance.QuitGame();
 	}
 }

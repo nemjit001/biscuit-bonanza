@@ -4,4 +4,6 @@
 
 [node name="Main" type="Node3D"]
 
-[node name="MainMenu" parent="." instance=ExtResource("6_nacht")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("6_nacht")]

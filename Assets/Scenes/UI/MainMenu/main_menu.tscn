@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqpr0plnbjtl3"]
+[gd_scene load_steps=3 format=3 uid="uid://bqpr0plnbjtl3"]
 
+[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="1_6xmp8"]
 [ext_resource type="Script" uid="uid://bs6wcxsbjtfdj" path="res://Assets/Scenes/UI/MainMenu/MainMenu.cs" id="1_lmbrl"]
 
 [node name="MainMenu" type="Control"]
@@ -9,9 +10,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6xmp8")
 script = ExtResource("1_lmbrl")
+GameScenePath = "uid://5rhmhkb7kfd7"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,7 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]

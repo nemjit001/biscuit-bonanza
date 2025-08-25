@@ -3,9 +3,12 @@ using System;
 
 public partial class MainMenu : Control
 {
-	public void OnPlayPressed()
+    [Export(PropertyHint.File, "*.tscn,*.scn")]
+    public string GameScenePath;
+
+    public void OnPlayPressed()
 	{
-		GameManager.Instance.LoadScene("res://Assets/Scenes/demo_scene.tscn");
+		GameManager.Instance.LoadScene(GameScenePath);
 	}
 
 	public void OnQuitPressed()
