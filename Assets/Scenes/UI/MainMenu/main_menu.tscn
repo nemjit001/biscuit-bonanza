@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqpr0plnbjtl3"]
+[gd_scene load_steps=2 format=3 uid="uid://bqpr0plnbjtl3"]
 
 [ext_resource type="Script" uid="uid://bs6wcxsbjtfdj" path="res://Assets/Scenes/UI/MainMenu/MainMenu.cs" id="1_lmbrl"]
-[ext_resource type="PackedScene" uid="uid://5rhmhkb7kfd7" path="res://Assets/Scenes/demo_scene.tscn" id="2_kl2x8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lmbrl")
-GameScene = ExtResource("2_kl2x8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,11 +31,11 @@ layout_mode = 2
 
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Play"
+text = "Play!"
 
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = "Quit to Desktop"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="OnPlayPressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="OnQuitPressed"]

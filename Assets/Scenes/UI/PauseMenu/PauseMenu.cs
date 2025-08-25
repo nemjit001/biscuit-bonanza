@@ -5,10 +5,14 @@ public partial class PauseMenu : Control
 {
     const string OPEN_MENU = "open_menu";
 
-	public override void _Ready()
+	MarginContainer _PauseMenuContainer = null;
+
+    public override void _Ready()
 	{
-		Hide();
-		GD.Print("PauseMenu Ready!");
+		_PauseMenuContainer = GetNode<MarginContainer>("PauseMenuContainer");
+		_PauseMenuContainer.Hide();
+
+        GD.Print("PauseMenu Ready!");
 	}
 
     public override void _Process(double delta)
@@ -23,10 +27,10 @@ public partial class PauseMenu : Control
 		SceneTree tree = GetTree();
 		tree.Paused = !tree.Paused;
 		if (tree.Paused) {
-			Show();
+            _PauseMenuContainer.Show();
 		}
 		else {
-			Hide();
+            _PauseMenuContainer.Hide();
 		}
 	}
 
@@ -35,8 +39,19 @@ public partial class PauseMenu : Control
 		TogglePause();
 	}
 
-	public void OnQuitPressed()
+    public void OnQuitToMenuPressed()
+    {
+		SceneTree tree = GetTree();
+		tree.Paused = false;
+
+		GameManager.Instance.LoadScene("res://Assets/Scenes/main.tscn");
+    }
+
+    public void OnQuitPressed()
 	{
-		GameManager.Instance.QuitGame();
+        SceneTree tree = GetTree();
+        tree.Paused = false;
+
+        GameManager.Instance.QuitGame();
 	}
 }

@@ -3,11 +3,9 @@ using System;
 
 public partial class MainMenu : Control
 {
-	[Export] public PackedScene GameScene = null;
-
 	public void OnPlayPressed()
 	{
-		GameManager.Instance.LoadScene(GameScene.ResourcePath);
+		GameManager.Instance.LoadScene("res://Assets/Scenes/demo_scene.tscn");
 	}
 
 	public void OnQuitPressed()
