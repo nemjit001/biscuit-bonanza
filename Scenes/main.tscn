@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://5rhmhkb7kfd7"]
+[gd_scene load_steps=10 format=3 uid="uid://5rhmhkb7kfd7"]
 
 [ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Scenes/environment.tres" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Scenes/Characters/Player/player.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Scenes/Items/biscuits.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Scenes/Environment/Biscuits/biscuits.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Scenes/Characters/FamilyMember/family_member.tscn" id="4_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Scenes/Environment/DogHouse/dog_house.tscn" id="5_kry3j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(20, 2, 20)
@@ -76,3 +78,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Biscuits" parent="." instance=ExtResource("4_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.522512, 0)
+
+[node name="FamilyMember" parent="." instance=ExtResource("4_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
+
+[node name="DogHouse" parent="." instance=ExtResource("5_kry3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7)

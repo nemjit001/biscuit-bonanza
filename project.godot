@@ -17,6 +17,11 @@ run/main_scene="uid://5rhmhkb7kfd7"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [dotnet]
 
 project/assembly_name="Biscuit Bonanza"
@@ -65,3 +70,8 @@ drop_item={
 3d_physics/layer_1="World"
 3d_physics/layer_2="Louie"
 3d_physics/layer_3="Biscuits"
+3d_physics/layer_4="Family"
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=1

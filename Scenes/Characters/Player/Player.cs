@@ -99,10 +99,8 @@ public partial class Player : CharacterBody3D
     private void UpdateRotation()
     {
         // TODO(nemjit001): Rotate towards move direction instead of snapping
-        if (_CurrMoveDirection != Vector3.Zero)
-        {
-            Vector3 MoveTarget = Position + _CurrMoveDirection;
-            _Pivot.LookAt(MoveTarget, Vector3.Up);
+        if (_CurrMoveDirection != Vector3.Zero) {
+            _Pivot.Basis = Basis.LookingAt(_CurrMoveDirection, Vector3.Up);
         }
     }
 }
