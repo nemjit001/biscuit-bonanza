@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqheedtstbakr"]
 
-[ext_resource type="Material" uid="uid://cakbatxuai6ck" path="res://Environment/DogHouse/dog_house.material" id="1_1rm74"]
-[ext_resource type="Script" uid="uid://dmnv1uqkkbd16" path="res://Scenes/Environment/DogHouse/DogHouse.cs" id="1_acl1l"]
+[ext_resource type="Material" uid="uid://cakbatxuai6ck" path="res://Assets/Environment/DogHouse/dog_house.material" id="1_1rm74"]
+[ext_resource type="Script" uid="uid://dmnv1uqkkbd16" path="res://Assets/Scenes/Environment/DogHouse/DogHouse.cs" id="1_acl1l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jyit0"]
 size = Vector3(2, 2, 2)

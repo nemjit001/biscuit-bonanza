@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dvqofqxvkwyta"
-path="res://.godot/imported/biscuits.glb-8d94bdcb2a927227856117e4c5081457.scn"
+path="res://.godot/imported/biscuits.glb-9d725fe85477a96a98c4a3358e992d6b.scn"
 
 [deps]
 
-source_file="res://Environment/Biscuits/biscuits.glb"
-dest_files=["res://.godot/imported/biscuits.glb-8d94bdcb2a927227856117e4c5081457.scn"]
+source_file="res://Assets/Environment/Biscuits/biscuits.glb"
+dest_files=["res://.godot/imported/biscuits.glb-9d725fe85477a96a98c4a3358e992d6b.scn"]
 
 [params]
 
@@ -36,7 +36,7 @@ _subresources={
 "materials": {
 "BiscuitMaterial": {
 "use_external/enabled": true,
-"use_external/path": "res://Environment/Biscuits/BiscuitMaterial.tres"
+"use_external/path": "uid://ci416bg4d5uja"
 }
 }
 }
