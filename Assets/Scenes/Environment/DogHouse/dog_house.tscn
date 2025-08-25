@@ -12,7 +12,7 @@ radius = 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_acl1l"]
 size = Vector3(2, 2, 2)
 
-[node name="DogHouse" type="Node3D"]
+[node name="DogHouse" type="Node3D" groups=["navigation_mesh_source_group"]]
 script = ExtResource("1_acl1l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -31,3 +31,10 @@ shape = SubResource("SphereShape3D_1rm74")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_acl1l")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+height = 3.0
+vertices = PackedVector3Array(-1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

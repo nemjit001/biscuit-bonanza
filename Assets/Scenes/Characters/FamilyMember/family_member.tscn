@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cawm8kkmd3w2u"]
+[gd_scene load_steps=4 format=3 uid="uid://cawm8kkmd3w2u"]
+
+[ext_resource type="Script" uid="uid://cffbi35hn3xp0" path="res://Assets/Scenes/Characters/FamilyMember/FamilyMember.cs" id="1_vx12d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_g0n7w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0n7w"]
 
 [node name="FamilyMember" type="Node3D"]
+script = ExtResource("1_vx12d")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_g0n7w")
