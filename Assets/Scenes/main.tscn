@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dc1aphmew1t7j"]
 
-[ext_resource type="PackedScene" uid="uid://bqpr0plnbjtl3" path="res://Assets/Scenes/UI/main_menu.tscn" id="6_nacht"]
+[ext_resource type="PackedScene" uid="uid://bqpr0plnbjtl3" path="res://Assets/Scenes/UI/MainMenu/main_menu.tscn" id="6_nacht"]
 
 [node name="Main" type="Node3D"]
 

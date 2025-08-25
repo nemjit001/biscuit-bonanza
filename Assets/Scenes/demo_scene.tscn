@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Assets/Scenes/Environment/Biscuits/biscuits.tscn" id="3_kxhqp"]
 [ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="4_f7mx1"]
 [ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
-[ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/pause_menu.tscn" id="6_bhd3g"]
+[ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/PauseMenu/pause_menu.tscn" id="6_bhd3g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(20, 2, 20)
