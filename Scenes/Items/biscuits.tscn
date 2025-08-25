@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cswp6gaw7xt6a"]
+[gd_scene load_steps=4 format=3 uid="uid://cswp6gaw7xt6a"]
 
-[ext_resource type="Material" uid="uid://c42r2y2264dnv" path="res://Environment/Biscuits/biscuits.material" id="1_u5ve3"]
 [ext_resource type="Script" uid="uid://dpn1moepn3uiw" path="res://Scenes/Items/Biscuits.cs" id="1_wufw1"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_wufw1"]
-size = Vector3(0.5, 0.5, 0.5)
+[ext_resource type="PackedScene" uid="uid://dvqofqxvkwyta" path="res://Environment/Biscuits/biscuits.glb" id="2_wufw1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rcnya"]
 radius = 1.0
@@ -12,9 +9,7 @@ radius = 1.0
 [node name="Biscuits" type="Node3D"]
 script = ExtResource("1_wufw1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_wufw1")
-surface_material_override/0 = ExtResource("1_u5ve3")
+[node name="biscuits" parent="." instance=ExtResource("2_wufw1")]
 
 [node name="PickupArea" type="Area3D" parent="."]
 collision_layer = 4
