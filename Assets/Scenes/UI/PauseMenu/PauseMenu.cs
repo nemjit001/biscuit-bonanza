@@ -41,6 +41,9 @@ public partial class PauseMenu : Control
         SceneTree tree = GetTree();
         tree.Paused = true;
 
+        Button closeButton = GetNode<Button>("PauseMenuContainer/VBoxContainer/CloseButton");
+        closeButton.GrabFocus();
+
         _PauseMenuContainer.Show();
     }
 
