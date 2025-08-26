@@ -13,8 +13,17 @@ grow_vertical = 2
 script = ExtResource("1_0jt6v")
 MainMenuScenePath = "uid://dc1aphmew1t7j"
 
-[node name="PauseMenuContainer" type="MarginContainer" parent="."]
+[node name="PauseMenuContainer" type="ColorRect" parent="."]
 process_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenuContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -29,21 +38,21 @@ offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CloseButton" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="PauseMenuContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Close"
 
-[node name="QuitToMenuButton" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+[node name="QuitToMenuButton" type="Button" parent="PauseMenuContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Menu"
 
-[node name="QuitButton" type="Button" parent="PauseMenuContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="PauseMenuContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit to Desktop"
 
-[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/CloseButton" to="." method="OnClosePressed"]
-[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/QuitToMenuButton" to="." method="OnQuitToMenuPressed"]
-[connection signal="pressed" from="PauseMenuContainer/VBoxContainer/QuitButton" to="." method="OnQuitPressed"]
+[connection signal="pressed" from="PauseMenuContainer/MarginContainer/VBoxContainer/CloseButton" to="." method="OnClosePressed"]
+[connection signal="pressed" from="PauseMenuContainer/MarginContainer/VBoxContainer/QuitToMenuButton" to="." method="OnQuitToMenuPressed"]
+[connection signal="pressed" from="PauseMenuContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="OnQuitPressed"]

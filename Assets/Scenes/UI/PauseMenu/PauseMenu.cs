@@ -8,11 +8,11 @@ public partial class PauseMenu : Control
     [Export(PropertyHint.File, "*.tscn,*.scn")]
     public string MainMenuScenePath;
 
-    MarginContainer _PauseMenuContainer = null;
+    Control _PauseMenuContainer = null;
 
     public override void _Ready()
 	{
-		_PauseMenuContainer = GetNode<MarginContainer>("PauseMenuContainer");
+		_PauseMenuContainer = GetNode<Control>("PauseMenuContainer");
 		_PauseMenuContainer.Hide();
 
         GD.Print("PauseMenu Ready!");
@@ -41,7 +41,7 @@ public partial class PauseMenu : Control
         SceneTree tree = GetTree();
         tree.Paused = true;
 
-        Button closeButton = GetNode<Button>("PauseMenuContainer/VBoxContainer/CloseButton");
+        Button closeButton = GetNode<Button>("PauseMenuContainer/MarginContainer/VBoxContainer/CloseButton");
         closeButton.GrabFocus();
 
         _PauseMenuContainer.Show();
