@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm7j8q1bgrfa1"]
+[gd_scene load_steps=6 format=3 uid="uid://bm7j8q1bgrfa1"]
 
 [ext_resource type="Script" uid="uid://dgv1fm2ixykxq" path="res://Assets/Scenes/Characters/Player/Player.cs" id="1_3etf2"]
+[ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/PauseMenu/pause_menu.tscn" id="2_btlrb"]
 [ext_resource type="Material" uid="uid://cesmoh0kmadqw" path="res://Assets/Characters/Player/player.material" id="2_lyjr2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j6hkg"]
@@ -11,6 +12,10 @@ radius = 0.75
 [node name="Player" type="CharacterBody3D" groups=["louie"]]
 collision_layer = 15
 script = ExtResource("1_3etf2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_btlrb")]
 
 [node name="CameraPivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
