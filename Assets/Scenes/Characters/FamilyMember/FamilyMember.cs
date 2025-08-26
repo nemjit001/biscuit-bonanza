@@ -8,86 +8,125 @@ public partial class FamilyMember : CharacterBody3D
 	[Export] public float MoveSpeed = 500.0F;
 	[Export] public float Gravity = 9.81F;
 
-	Node3D _Pivot = null;
+	Vector3 _CurrMoveDirection = Vector3.Zero;
+
+	bool _IsChasing = false;
+    Vector3 _ChaseTarget = Vector3.Zero;
+
+    Node3D _Pivot = null;
 	NavigationAgent3D _NavAgent = null;
+	RayCastSearch _LouieSearch = null;
 
 	public override void _Ready()
 	{
-		Area3D captureArea = GetNode<Area3D>("Pivot/CaptureArea");
-		captureArea.BodyEntered += OnBodyEntered;
+		Area3D caputureArea = GetNode<Area3D>("Pivot/CaptureArea");
+        caputureArea.BodyEntered += OnBodyEntered;
 
 		_Pivot = GetNode<Node3D>("Pivot");
+
 		_NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		_NavAgent.VelocityComputed += OnVelocityComputed;
 
-		GD.Print("FamilyMember Ready!");
+		_LouieSearch = GetNode<RayCastSearch>("Pivot/RayCastSearch");
+		_LouieSearch.TargetSeen += OnLouieSeen;
+
+        GD.Print("FamilyMember Ready!");
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_NavAgent.IsNavigationFinished())
-		{
-			// Update path position
-			// TODO(nemjit001): If chasing and player is still visible this is the player position
-			// else this is the next patrol point
-			MoveToTarget(Vector3.Zero);
+		if (_IsChasing) {
+			MoveToTarget(_ChaseTarget);
+		}
+		else {
+			MoveToTarget(Vector3.Zero); // TODO(nemjit001): Move to random patrol point in scene
 		}
 	}
 
     public override void _PhysicsProcess(double delta)
     {
-		if (_NavAgent.IsNavigationFinished()) {
-			return; // Nothing to do here :)
-		}
-
-		// Move to next path position using physics movement
-        Vector3 moveTarget = _NavAgent.GetNextPathPosition();
-        Vector3 moveDirection = GlobalPosition.DirectionTo(moveTarget);
-		moveDirection.Y = 0; // We only care about x/z plane movement
-        if (moveDirection.LengthSquared() > 1.0) {
-            moveDirection = moveDirection.Normalized();
-        }
-
-		// Update character rotation
-		if (moveDirection != Vector3.Zero) {
-			_Pivot.Basis = Basis.LookingAt(moveDirection, Vector3.Up);
-		}
-
-		// Update movement velocity
-		Vector3 velocity = moveDirection * MoveSpeed * (float)delta;
-		velocity += Vector3.Down * Gravity * 1_000.0F * (float)(delta);
-
-		if (_NavAgent.AvoidanceEnabled) {
-			_NavAgent.Velocity = velocity;
-		}
-		else {
-			OnVelocityComputed(velocity);
-		}
-
+		UpdateNavigation(delta);
 		MoveAndSlide();
     }
 
+	// Move this family member to a target position
 	public void MoveToTarget(Vector3 target)
 	{
         _NavAgent.TargetPosition = target;
     }
 
+	// Handle velocity update by nav agent
 	public void OnVelocityComputed(Vector3 velocity)
 	{
 		Velocity = velocity;
         MoveAndSlide();
     }
 
+	// Handle possible capture of Louie
     public void OnBodyEntered(Node3D node)
 	{
-		GD.Print("Did we catch him?");
-		if (node.IsInGroup(LOUIE_GROUP)) {
-			Player player = (Player)node;
-			if (player.HasBiscuits()) {
-				GD.Print("We caught him!");
-				ScoreManager.Instance.Score.TimesCaught += 1;
-				// TODO(nemjit001): Restart level
-			}
+		if (!node.IsInGroup(LOUIE_GROUP)) {
+			return;
 		}
+
+        GD.Print("Did we catch him?");
+        Player player = (Player)node;
+		if (!player.HasBiscuits()) {
+			return;
+		}
+
+		GD.Print("We caught him!");
+		ScoreManager.Instance.Score.TimesCaught += 1;
+		// TODO(nemjit001): Restart level
 	}
+
+	// Handle possible louie sighting
+	public void OnLouieSeen(Node3D target, Vector3 position)
+	{
+		if (!target.IsInGroup(LOUIE_GROUP)) {
+			return;
+		}
+
+        GD.Print($"Does he have the biscuits?");
+        Player player = (Player)target;
+        if (!player.HasBiscuits()) { // Don't chase if they don't have biscuits
+			_IsChasing = false;
+            return;
+		}
+
+		GD.Print($"We see him with the biscuits!");
+		_IsChasing = true;
+        _ChaseTarget = target.GlobalPosition;
+	}
+
+	private void UpdateNavigation(double delta)
+	{
+        if (_NavAgent.IsNavigationFinished()) {
+            return; // Nothing to do here :)
+        }
+
+        // Move to next path position using physics movement
+        Vector3 moveTarget = _NavAgent.GetNextPathPosition();
+        _CurrMoveDirection = GlobalPosition.DirectionTo(moveTarget);
+        _CurrMoveDirection.Y = 0; // We only care about x/z plane movement
+        if (_CurrMoveDirection.LengthSquared() > 1.0) {
+            _CurrMoveDirection = _CurrMoveDirection.Normalized();
+        }
+
+        // Update character rotation
+        if (_CurrMoveDirection != Vector3.Zero) {
+            _Pivot.Basis = Basis.LookingAt(_CurrMoveDirection, Vector3.Up);
+        }
+
+        // Update movement velocity
+        Vector3 velocity = _CurrMoveDirection * MoveSpeed * (float)delta;
+        velocity += Vector3.Down * Gravity * 1_000.0F * (float)(delta);
+
+        if (_NavAgent.AvoidanceEnabled) {
+            _NavAgent.Velocity = velocity;
+        }
+        else {
+            OnVelocityComputed(velocity);
+        }
+    }
 }

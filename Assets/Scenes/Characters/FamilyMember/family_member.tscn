@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cawm8kkmd3w2u"]
+[gd_scene load_steps=6 format=3 uid="uid://cawm8kkmd3w2u"]
 
 [ext_resource type="Script" uid="uid://cffbi35hn3xp0" path="res://Assets/Scenes/Characters/FamilyMember/FamilyMember.cs" id="1_vx12d"]
+[ext_resource type="Script" uid="uid://cb6dc5i5nyens" path="res://Assets/Scenes/Characters/FamilyMember/RayCastSearch.cs" id="2_cfgd8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0n7w"]
 
@@ -11,6 +12,7 @@ radius = 0.75
 
 [node name="FamilyMember" type="CharacterBody3D"]
 script = ExtResource("1_vx12d")
+MoveSpeed = 200.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -30,3 +32,8 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/CaptureArea"]
 shape = SubResource("SphereShape3D_vx12d")
+
+[node name="RayCastSearch" type="Node3D" parent="Pivot" node_paths=PackedStringArray("IgnoredNodes")]
+script = ExtResource("2_cfgd8")
+CollisionMask = 2
+IgnoredNodes = [NodePath("../.."), NodePath("../CaptureArea")]

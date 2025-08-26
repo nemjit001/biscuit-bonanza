@@ -13,8 +13,11 @@ public partial class Player : CharacterBody3D
     [Signal]
     public delegate void ActivateObjectEventHandler(Player player);
 
-    [Export] public float Gravity = 9.81F;
-    [Export] public float MoveSpeed = 500.0F;
+    [Export]
+    public float Gravity = 9.81F;
+
+    [Export]
+    public float MoveSpeed = 500.0F;
 
     PackedScene _ItemScene = null;
     Vector3 _CurrMoveDirection = Vector3.Zero;

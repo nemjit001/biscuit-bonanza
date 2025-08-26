@@ -2,10 +2,7 @@ using Godot;
 using System;
 
 public partial class PlayerScore : Resource
-{
-    [Export]
-    public int TimesSpotted = 0;
-    
+{    
     [Export]
     public int TimesCaught = 0;
     
@@ -14,9 +11,8 @@ public partial class PlayerScore : Resource
 
     public PlayerScore() {}
 
-    public PlayerScore(int timesSpotted, int timesCaught, int biscuitsCollected)
+    public PlayerScore(int timesCaught, int biscuitsCollected)
     {
-        TimesSpotted = timesSpotted;
         TimesCaught = timesCaught;
         BiscuitsCollected = biscuitsCollected;
     }
