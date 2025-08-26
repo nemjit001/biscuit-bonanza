@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Biscuit Bonanza"
-config/description="Find and steal your biscuits as Louie the Corgi in a house full of people."
-config/version="0.0.0.0"
+config/description="Find and steal back your biscuits as Louie the Corgi in a house full of people!"
+config/version="0.1.0.0"
 run/main_scene="uid://dc1aphmew1t7j"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://Assets/icon.svg"
@@ -20,6 +20,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 GameManager="*res://Assets/GameManager.cs"
+ScoreManager="*res://Assets/ScoreManager.cs"
 
 [display]
 

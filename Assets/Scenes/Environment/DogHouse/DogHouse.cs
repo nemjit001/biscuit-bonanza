@@ -18,7 +18,8 @@ public partial class DogHouse : Node3D
 		GD.Print("Something dropped at DogHouse!");
 		if (area.IsInGroup(BISCUITS_GROUP)) {
 			GD.Print("Biscuits Delivered!");
-			// TODO(nemjit001): Save score and go to score screen
+			ScoreManager.Instance.Score.BiscuitsCollected += 1;
+			// TODO(nemjit001): Restart level (with higher difficulty?)
 		}
 	}
 }
