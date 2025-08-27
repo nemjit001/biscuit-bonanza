@@ -21,6 +21,7 @@ public partial class FamilyMember : CharacterBody3D
     Vector3 _ChaseTarget = Vector3.Zero;
 
     Node3D _Pivot = null;
+	AnimationPlayer _AnimPlayer = null;
 	Timer _ChaseTimer = null;
 	NavigationAgent3D _NavAgent = null;
 	RayCastSearch _LouieSearch = null;
@@ -31,6 +32,8 @@ public partial class FamilyMember : CharacterBody3D
         caputureArea.BodyEntered += OnBodyEntered;
 
 		_Pivot = GetNode<Node3D>("Pivot");
+
+		_AnimPlayer = GetNode<AnimationPlayer>("Pivot/FamilyMemberMesh/AnimationPlayer");
 
         _ChaseTimer = GetNode<Timer>("ChaseTimer");
         _ChaseTimer.Timeout += OnChaseEnd;
@@ -47,7 +50,12 @@ public partial class FamilyMember : CharacterBody3D
 
 	public override void _Process(double delta)
 	{
-		//
+		if (Velocity != Vector3.Zero) {
+			_AnimPlayer.Play("Walk", -1, Velocity.Length() * 0.5F);
+		}
+		else {
+			_AnimPlayer.Stop();
+		}
     }
 
     public override void _PhysicsProcess(double delta)

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cffbi35hn3xp0" path="res://Assets/Scenes/Characters/FamilyMember/FamilyMember.cs" id="1_vx12d"]
 [ext_resource type="PackedScene" uid="uid://da86uqs0qijgl" path="res://Assets/Scenes/Characters/FamilyMember/ray_cast_search.tscn" id="2_cfgd8"]
+[ext_resource type="PackedScene" uid="uid://ioolgsc73c8y" path="res://Assets/Characters/FamilyMember/FamilyMember.glb" id="2_krl7r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0n7w"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_g0n7w"]
+height = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vx12d"]
 radius = 0.75
@@ -19,16 +19,16 @@ ChaseDuration = 5.0
 avoidance_enabled = true
 
 [node name="CharacterCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49982, 0)
 shape = SubResource("CapsuleShape3D_g0n7w")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
-mesh = SubResource("CapsuleMesh_g0n7w")
-skeleton = NodePath("../..")
+[node name="FamilyMemberMesh" parent="Pivot" instance=ExtResource("2_krl7r")]
+transform = Transform3D(-1.5, 0, 2.26494e-07, 0, 1.5, 0, -2.26494e-07, 0, -1.5, 0, -0.000181913, 0)
 
 [node name="CaptureArea" type="Area3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.5)
 collision_layer = 10
 collision_mask = 2
 
@@ -36,6 +36,7 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_vx12d")
 
 [node name="RayCastSearch" parent="Pivot" node_paths=PackedStringArray("IgnoredNodes") instance=ExtResource("2_cfgd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 RayCount = 30
 CollisionMask = 18
 IgnoredNodes = [NodePath("../CaptureArea"), NodePath("../..")]
