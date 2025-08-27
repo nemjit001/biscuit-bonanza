@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck6rn7g0qnqq1"]
+
+[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="1_kg2xe"]
+[ext_resource type="Script" uid="uid://cf353ngyxgaog" path="res://Assets/Scenes/UI/ScoreMenu/ScoreMenu.cs" id="2_gm00y"]
+
+[node name="ScoreMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kg2xe")
+script = ExtResource("2_gm00y")
+MainMenuScenePath = "uid://dc1aphmew1t7j"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.117647)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -52.0
+offset_right = 77.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Final Score"
+horizontal_alignment = 1
+
+[node name="HScoreContainer" type="HBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CategoryLabels" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer"]
+layout_mode = 2
+
+[node name="TimesCaughtLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/CategoryLabels"]
+layout_mode = 2
+text = "Times Caught:"
+
+[node name="TimesEscapedLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/CategoryLabels"]
+layout_mode = 2
+text = "Times Escaped:"
+
+[node name="BiscuitsCollectedLabel" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/CategoryLabels"]
+layout_mode = 2
+text = "Biscuits Collected:"
+
+[node name="ScoreLabels" type="VBoxContainer" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer"]
+layout_mode = 2
+
+[node name="TimesCaughtScore" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/ScoreLabels"]
+layout_mode = 2
+text = "0"
+
+[node name="TimesEscapedScore" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/ScoreLabels"]
+layout_mode = 2
+text = "0"
+
+[node name="BiscuitsCollectedScore" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/HScoreContainer/ScoreLabels"]
+layout_mode = 2
+text = "0"
+
+[node name="MenuButton" type="Button" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Menu"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/VBoxContainer/MenuButton" to="." method="OnQuitToMenuPressed"]
