@@ -73,7 +73,7 @@ public partial class Player : Node3D
         }
 
         Biscuits biscuits = _ItemScene.Instantiate<Biscuits>();
-        biscuits.Position = _CameraPivot.Position;
+        biscuits.Position = _PlayerBody.GlobalPosition;
 
         Node3D root = GetOwner<Node3D>();
         root.AddChild(biscuits);
