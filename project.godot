@@ -100,6 +100,7 @@ open_menu={
 3d_physics/layer_2="Louie"
 3d_physics/layer_3="Biscuits"
 3d_physics/layer_4="Family"
+3d_physics/layer_5="Obstacles"
 
 [rendering]
 

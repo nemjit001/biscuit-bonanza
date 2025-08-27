@@ -12,10 +12,11 @@ radius = 0.75
 
 [node name="FamilyMember" type="CharacterBody3D"]
 script = ExtResource("1_vx12d")
-MoveSpeed = 250.0
+MoveSpeed = 400.0
 ChaseDuration = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 
 [node name="CharacterCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_g0n7w")
@@ -36,7 +37,7 @@ shape = SubResource("SphereShape3D_vx12d")
 
 [node name="RayCastSearch" parent="Pivot" node_paths=PackedStringArray("IgnoredNodes") instance=ExtResource("2_cfgd8")]
 RayCount = 30
-CollisionMask = 3
+CollisionMask = 18
 IgnoredNodes = [NodePath("../CaptureArea"), NodePath("../..")]
 
 [node name="ChaseTimer" type="Timer" parent="."]

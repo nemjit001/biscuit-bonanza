@@ -67,6 +67,7 @@ skeleton = NodePath("../..")
 
 [node name="WallFront" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallFront"]
 mesh = SubResource("BoxMesh_bhd3g")
@@ -76,6 +77,7 @@ shape = SubResource("BoxShape3D_um7u5")
 
 [node name="WallBack" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 20)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallBack"]
 mesh = SubResource("BoxMesh_um7u5")
@@ -85,6 +87,7 @@ shape = SubResource("BoxShape3D_bhd3g")
 
 [node name="WallRight" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 2, 0)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallRight"]
 mesh = SubResource("BoxMesh_bo1nx")
@@ -94,6 +97,7 @@ shape = SubResource("BoxShape3D_bo1nx")
 
 [node name="WallLeft" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 2, 0)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallLeft"]
 mesh = SubResource("BoxMesh_bo1nx")
@@ -103,6 +107,7 @@ shape = SubResource("BoxShape3D_bo1nx")
 
 [node name="Obstacle" type="StaticBody3D" parent="." groups=["navigation_mesh_source_group"]]
 transform = Transform3D(0.983233, 0, 0.182356, 0, 1, 0, -0.182356, 0, 0.983233, 1.86019, 1, -10.0433)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
 mesh = SubResource("BoxMesh_kxhqp")
@@ -118,6 +123,7 @@ affect_navigation_mesh = true
 
 [node name="Obstacle2" type="StaticBody3D" parent="." groups=["navigation_mesh_source_group"]]
 transform = Transform3D(0.970871, 0, -0.239601, 0, 1, 0, 0.239601, 0, 0.970871, 0.456122, 1, 5.05166)
+collision_layer = 17
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle2"]
 mesh = SubResource("BoxMesh_kxhqp")
@@ -144,13 +150,13 @@ transform = Transform3D(-0.487799, 0, -0.872956, 0, 1, 0, 0.872956, 0, -0.487799
 transform = Transform3D(0.945661, 0, -0.325155, 0, 1, 0, 0.325155, 0, 0.945661, -5.97943, 0.522514, 16.3763)
 
 [node name="FamilyMember" parent="." instance=ExtResource("5_7trpf")]
-transform = Transform3D(0.75307, 0, -0.657941, 0, 1, 0, 0.657941, 0, 0.75307, 6, 1, 0)
+transform = Transform3D(0.230865, 0, 0.972986, 0, 1, 0, -0.972986, 0, 0.230865, 6, 1, 0)
 
 [node name="FamilyMember2" parent="." instance=ExtResource("5_7trpf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.47833)
+transform = Transform3D(-0.886938, 0, 0.461888, 0, 1, 0, -0.461888, 0, -0.886938, 0, 1, 7.47833)
 
 [node name="FamilyMember3" parent="." instance=ExtResource("5_7trpf")]
-transform = Transform3D(0.813882, 0, 0.58103, 0, 1, 0, -0.58103, 0, 0.813882, -6.39704, 1, -15.809)
+transform = Transform3D(-0.861815, 0, -0.507223, 0, 1, 0, 0.507223, 0, -0.861815, -6.39704, 1, -15.809)
 
 [node name="DogHouse" parent="." instance=ExtResource("6_6e7at")]
 transform = Transform3D(-0.996533, 0, -0.0831915, 0, 1, 0, 0.0831915, 0, -0.996533, 6.1914, 1, -16.2697)

@@ -14,6 +14,7 @@ public partial class FamilyMember : CharacterBody3D
 	[Export]
 	public float ChaseDuration = 10.0F;
 
+	Vector3 _InitialPosition = Vector3.Zero;
 	Vector3 _CurrMoveDirection = Vector3.Zero;
 
 	bool _IsChasing = false;
@@ -40,24 +41,34 @@ public partial class FamilyMember : CharacterBody3D
 		_LouieSearch = GetNode<RayCastSearch>("Pivot/RayCastSearch");
 		_LouieSearch.TargetSeen += OnLouieSeen;
 
+		_InitialPosition = GlobalPosition;
         GD.Print("FamilyMember Ready!");
 	}
 
 	public override void _Process(double delta)
 	{
-		if (_IsChasing)
-		{
-			MoveToTarget(_ChaseTarget);
-			return;
-		}
-		
-		MoveToTarget(Vector3.Zero); // TODO(nemjit001): Move to random patrol point in scene
-	}
+		//
+    }
 
     public override void _PhysicsProcess(double delta)
     {
-		UpdateNavigation(delta);
-		MoveAndSlide();
+		// Set navigation target
+		if (_IsChasing) {
+			MoveToTarget(_ChaseTarget);
+		}
+		else {
+			MoveToTarget(_InitialPosition); // TODO(nemjit001): Move to random patrol point in scene
+		}
+
+        // Update navigation state
+        UpdateNavigation(delta);
+
+        // Update character rotation
+        if (_CurrMoveDirection != Vector3.Zero) {
+            Quaternion = Quaternion.Slerp(Basis.LookingAt(_CurrMoveDirection, Vector3.Up).GetRotationQuaternion(), RotationSpeed * (float)delta);
+        }
+
+        MoveAndSlide();
     }
 
 	// Move this family member to a target position
@@ -70,7 +81,6 @@ public partial class FamilyMember : CharacterBody3D
 	public void OnVelocityComputed(Vector3 velocity)
 	{
 		Velocity = velocity;
-        MoveAndSlide();
     }
 
 	// Handle possible capture of Louie
@@ -112,7 +122,7 @@ public partial class FamilyMember : CharacterBody3D
 	{
 		_IsChasing = false;
 		_ChaseTarget = Vector3.Zero;
-	}
+    }
 
 	private void UpdateNavigation(double delta)
 	{
@@ -126,11 +136,6 @@ public partial class FamilyMember : CharacterBody3D
         _CurrMoveDirection.Y = 0; // We only care about x/z plane movement
         if (_CurrMoveDirection.LengthSquared() > 1.0) {
             _CurrMoveDirection = _CurrMoveDirection.Normalized();
-        }
-
-        // Update character rotation
-        if (_CurrMoveDirection != Vector3.Zero) {
-			Quaternion = Quaternion.Slerp(Basis.LookingAt(_CurrMoveDirection, Vector3.Up).GetRotationQuaternion(), RotationSpeed * (float)delta);
         }
 
         // Update movement velocity
