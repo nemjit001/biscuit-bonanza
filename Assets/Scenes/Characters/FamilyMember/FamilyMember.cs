@@ -129,7 +129,7 @@ public partial class FamilyMember : CharacterBody3D
 
         // Update character rotation
         if (_CurrMoveDirection != Vector3.Zero) {
-            _Pivot.Quaternion = _Pivot.Quaternion.Slerp(Basis.LookingAt(_CurrMoveDirection, Vector3.Up).GetRotationQuaternion(), RotationSpeed * (float)delta);
+			Quaternion = Quaternion.Slerp(Basis.LookingAt(_CurrMoveDirection, Vector3.Up).GetRotationQuaternion(), RotationSpeed * (float)delta);
         }
 
         // Update movement velocity

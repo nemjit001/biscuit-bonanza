@@ -4,4 +4,3 @@
 
 [node name="RayCastSearch" type="Node3D"]
 script = ExtResource("1_aorgn")
-CollisionMask = 2
