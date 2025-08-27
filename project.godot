@@ -19,8 +19,8 @@ config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-GameManager="*res://Assets/GameManager.cs"
-ScoreManager="*res://Assets/ScoreManager.cs"
+GameManager="*res://Assets/Globals/GameManager.cs"
+ScoreManager="*res://Assets/Globals/ScoreManager.cs"
 
 [display]
 

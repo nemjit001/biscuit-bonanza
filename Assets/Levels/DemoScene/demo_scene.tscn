@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://5rhmhkb7kfd7"]
 
-[ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Scenes/environment.tres" id="1_bhd3g"]
-[ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="2_um7u5"]
-[ext_resource type="PackedScene" uid="uid://iwuqbaqog2d5" path="res://Assets/Scenes/UI/FadeIn/fade_in.tscn" id="3_f7mx1"]
-[ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Assets/Scenes/Environment/Biscuits/biscuits.tscn" id="3_kxhqp"]
-[ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="4_f7mx1"]
-[ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
+[ext_resource type="PackedScene" uid="uid://iwuqbaqog2d5" path="res://Assets/Scenes/UI/FadeIn/fade_in.tscn" id="1_bmg74"]
+[ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Resources/environment.tres" id="2_be5le"]
+[ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="3_a5r7h"]
+[ext_resource type="PackedScene" uid="uid://cswp6gaw7xt6a" path="res://Assets/Scenes/Environment/Biscuits/biscuits.tscn" id="4_au3s5"]
+[ext_resource type="PackedScene" uid="uid://cawm8kkmd3w2u" path="res://Assets/Scenes/Characters/FamilyMember/family_member.tscn" id="5_7trpf"]
+[ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="6_6e7at"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
 size = Vector3(20, 2, 40)
@@ -46,14 +46,14 @@ geometry_source_geometry_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="FadeIn" parent="CanvasLayer" instance=ExtResource("3_f7mx1")]
+[node name="FadeIn" parent="CanvasLayer" instance=ExtResource("1_bmg74")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 4, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_bhd3g")
+environment = ExtResource("2_be5le")
 
 [node name="Ground" type="StaticBody3D" parent="." groups=["navigation_mesh_source_group"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -131,19 +131,19 @@ height = 3.0
 vertices = PackedVector3Array(-2.5, 0, 1, -2.5, 0, -1, 2.5, 0, -1, 2.5, 0, 1)
 affect_navigation_mesh = true
 
-[node name="Player" parent="." instance=ExtResource("2_um7u5")]
+[node name="Player" parent="." instance=ExtResource("3_a5r7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Biscuits" parent="." instance=ExtResource("3_kxhqp")]
+[node name="Biscuits" parent="." instance=ExtResource("4_au3s5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.522512, 0)
 
-[node name="FamilyMember" parent="." instance=ExtResource("4_f7mx1")]
+[node name="FamilyMember" parent="." instance=ExtResource("5_7trpf")]
 transform = Transform3D(0.75307, 0, -0.657941, 0, 1, 0, 0.657941, 0, 0.75307, 6, 1, 0)
 
-[node name="FamilyMember2" parent="." instance=ExtResource("4_f7mx1")]
+[node name="FamilyMember2" parent="." instance=ExtResource("5_7trpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.47833)
 
-[node name="DogHouse" parent="." instance=ExtResource("5_sbayc")]
+[node name="DogHouse" parent="." instance=ExtResource("6_6e7at")]
 transform = Transform3D(-0.996533, 0, -0.0831915, 0, 1, 0, 0.0831915, 0, -0.996533, 6.1914, 1, -16.2697)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

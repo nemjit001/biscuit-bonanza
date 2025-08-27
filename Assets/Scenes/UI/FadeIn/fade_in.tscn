@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://iwuqbaqog2d5"]
 
 [ext_resource type="Script" uid="uid://ihhoortpdbup" path="res://Assets/Scenes/UI/FadeIn/FadeIn.cs" id="1_7vtqq"]
-[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="2_anvle"]
+[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/Resources/default_theme.theme" id="2_anvle"]
 
 [sub_resource type="Animation" id="Animation_anvle"]
 resource_name = "fade"

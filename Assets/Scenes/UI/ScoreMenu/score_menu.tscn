@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck6rn7g0qnqq1"]
 
-[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/default_theme.theme" id="1_kg2xe"]
+[ext_resource type="Theme" uid="uid://qflh5m0pmu8o" path="res://Assets/Resources/default_theme.theme" id="1_kg2xe"]
 [ext_resource type="Script" uid="uid://cf353ngyxgaog" path="res://Assets/Scenes/UI/ScoreMenu/ScoreMenu.cs" id="2_gm00y"]
 
 [node name="ScoreMenu" type="Control"]

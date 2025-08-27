@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcqquikoeqbe6"]
+
+[ext_resource type="PackedScene" uid="uid://ck6rn7g0qnqq1" path="res://Assets/Scenes/UI/ScoreMenu/score_menu.tscn" id="1_v6mre"]
+
+[node name="Score" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreMenu" parent="CanvasLayer" instance=ExtResource("1_v6mre")]
