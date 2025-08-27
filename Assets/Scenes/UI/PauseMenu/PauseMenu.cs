@@ -12,9 +12,7 @@ public partial class PauseMenu : Control
 
     public override void _Ready()
 	{
-		_PauseMenuContainer = GetNode<Control>("PauseMenuContainer");
-		_PauseMenuContainer.Hide();
-
+		Hide();
         GD.Print("PauseMenu Ready!");
 	}
 
@@ -41,10 +39,10 @@ public partial class PauseMenu : Control
         SceneTree tree = GetTree();
         tree.Paused = true;
 
-        Button closeButton = GetNode<Button>("PauseMenuContainer/MarginContainer/VBoxContainer/CloseButton");
+        Button closeButton = GetNode<Button>("MarginContainer/VBoxContainer/CloseButton");
         closeButton.GrabFocus();
 
-        _PauseMenuContainer.Show();
+        Show();
     }
 
     void UnPause()
@@ -52,7 +50,7 @@ public partial class PauseMenu : Control
         SceneTree tree = GetTree();
         tree.Paused = false;
 
-        _PauseMenuContainer.Hide();
+        Hide();
     }
 
     public void OnClosePressed()

@@ -19,15 +19,16 @@ public partial class Player : Node3D
     Vector3 _CurrMoveDirection = Vector3.Zero;
     PlayerBody _PlayerBody = null;
     Marker3D _CameraPivot = null;
+    AnimationPlayer _AnimPlayer = null;
     PackedScene _ItemScene = null;
 
     public override void _Ready()
     {
         _PlayerBody = GetNode<PlayerBody>("PlayerBody");
         _CameraPivot = GetNode<Marker3D>("CameraPivot");
+        _AnimPlayer = GetNode<AnimationPlayer>("PlayerBody/Louie/AnimationPlayer");
 
         _PlayerBody.Initialize(this);
-
         GD.Print("Player Ready!");
     }
 
@@ -48,6 +49,14 @@ public partial class Player : Node3D
 
         // Forward movement direction
         _PlayerBody.SetMoveDirection(_CurrMoveDirection);
+
+        // Play animation
+        if (_CurrMoveDirection != Vector3.Zero) {
+            _AnimPlayer.Play("Walk", -1, _CurrMoveDirection.Length() * 1.5F /* Fix too slow animation */);
+        }
+        else {
+            _AnimPlayer.Stop();
+        }
     }
 
     public override void _PhysicsProcess(double delta)

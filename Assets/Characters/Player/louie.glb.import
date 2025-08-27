@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://v4f80mffn037"
-path="res://.godot/imported/louie.glb-73f91550ff1143244dca536f90194175.scn"
+uid="uid://cuhmwvc3pickq"
+path="res://.godot/imported/Louie.glb-c8054e839183ef5dfcab1f3df25a1b15.scn"
 
 [deps]
 
-source_file="res://Assets/Characters/Player/louie.glb"
-dest_files=["res://.godot/imported/louie.glb-73f91550ff1143244dca536f90194175.scn"]
+source_file="res://Assets/Characters/Player/Louie.glb"
+dest_files=["res://.godot/imported/Louie.glb-c8054e839183ef5dfcab1f3df25a1b15.scn"]
 
 [params]
 
