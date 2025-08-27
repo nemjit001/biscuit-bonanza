@@ -5,11 +5,14 @@ public partial class GameManager : Node
 {
 	public static GameManager Instance { get; private set; } = null;
 
+	public GameLevels Levels { get; private set; } = null;
+
 	Node _CurrentScene = null;
 
 	public override void _Ready()
 	{
 		Instance = this;
+		Levels = GD.Load<GameLevels>("res://Assets/Resources/GameLevels/game_levels.tres");
 		_CurrentScene = GetTree().Root.GetChild(-1);
 
 		GD.Print("GameManager Ready!");

@@ -2,10 +2,7 @@ using Godot;
 using System;
 
 public partial class ScoreMenu : Control
-{ 
-    [Export(PropertyHint.File, "*.tscn,*.scn")]
-    public string MainMenuScenePath;
-
+{
     public override void _Ready()
     {
         Label timesCaught = GetNode<Label>("ColorRect/MarginContainer/VBoxContainer/HScoreContainer/ScoreLabels/TimesCaughtScore");
@@ -19,6 +16,6 @@ public partial class ScoreMenu : Control
 
     public void OnQuitToMenuPressed()
     {
-        GameManager.Instance.LoadScene(MainMenuScenePath);
+        GameManager.Instance.LoadScene(GameManager.Instance.Levels.GameScenePath);
     }
 }

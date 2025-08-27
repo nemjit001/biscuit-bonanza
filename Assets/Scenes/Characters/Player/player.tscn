@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgv1fm2ixykxq" path="res://Assets/Scenes/Characters/Player/Player.cs" id="1_3etf2"]
 [ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/PauseMenu/pause_menu.tscn" id="2_btlrb"]
-[ext_resource type="PackedScene" uid="uid://cuhmwvc3pickq" path="res://Assets/Characters/Player/louie.glb" id="3_btlrb"]
+[ext_resource type="PackedScene" uid="uid://cuhmwvc3pickq" path="res://Assets/Characters/Player/Louie.glb" id="3_btlrb"]
 [ext_resource type="Script" uid="uid://c22rylej8j0yp" path="res://Assets/Scenes/Characters/Player/PlayerBody.cs" id="3_fegeg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_btlrb"]

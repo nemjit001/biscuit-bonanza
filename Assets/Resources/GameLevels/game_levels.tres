@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bf5kd5m4upqk"]
+
+[ext_resource type="Script" uid="uid://c3dskb8sgyrso" path="res://Assets/Resources/GameLevels/GameLevels.cs" id="1_23xqk"]
+
+[resource]
+script = ExtResource("1_23xqk")
+MainMenuScenePath = "uid://dc1aphmew1t7j"
+GameScenePath = "uid://5rhmhkb7kfd7"
+ScoreScenePath = "uid://dcqquikoeqbe6"

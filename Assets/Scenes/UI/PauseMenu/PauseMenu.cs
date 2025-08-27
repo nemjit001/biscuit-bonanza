@@ -5,9 +5,6 @@ public partial class PauseMenu : Control
 {
     const string OPEN_MENU = "open_menu";
 
-    [Export(PropertyHint.File, "*.tscn,*.scn")]
-    public string MainMenuScenePath;
-
     Control _PauseMenuContainer = null;
 
     public override void _Ready()
@@ -61,7 +58,7 @@ public partial class PauseMenu : Control
     public void OnQuitToMenuPressed()
     {
         UnPause();
-		GameManager.Instance.LoadScene(MainMenuScenePath);
+		GameManager.Instance.LoadScene(GameManager.Instance.Levels.MainMenuScenePath);
     }
 
     public void OnQuitPressed()
