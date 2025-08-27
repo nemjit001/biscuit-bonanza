@@ -12,7 +12,7 @@ radius = 0.75
 
 [node name="FamilyMember" type="CharacterBody3D"]
 script = ExtResource("1_vx12d")
-MoveSpeed = 150.0
+MoveSpeed = 250.0
 ChaseDuration = 5.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

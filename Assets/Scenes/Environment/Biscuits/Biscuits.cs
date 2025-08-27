@@ -35,6 +35,10 @@ public partial class Biscuits : Node3D
 
     public void OnActivateObject(Player player)
     {
+		if (player.HasBiscuits()) {
+			return;
+		}
+
         player.CollectBiscuits(this);
         GD.Print($"Biscuits Collected!");
 		QueueFree();

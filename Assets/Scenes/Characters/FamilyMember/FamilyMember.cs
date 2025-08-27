@@ -45,12 +45,13 @@ public partial class FamilyMember : CharacterBody3D
 
 	public override void _Process(double delta)
 	{
-		if (_IsChasing) {
+		if (_IsChasing)
+		{
 			MoveToTarget(_ChaseTarget);
+			return;
 		}
-		else {
-			MoveToTarget(Vector3.Zero); // TODO(nemjit001): Move to random patrol point in scene
-		}
+		
+		MoveToTarget(Vector3.Zero); // TODO(nemjit001): Move to random patrol point in scene
 	}
 
     public override void _PhysicsProcess(double delta)
@@ -62,7 +63,7 @@ public partial class FamilyMember : CharacterBody3D
 	// Move this family member to a target position
 	public void MoveToTarget(Vector3 target)
 	{
-        _NavAgent.TargetPosition = target;
+		_NavAgent.TargetPosition = target;
     }
 
 	// Handle velocity update by nav agent
@@ -86,7 +87,7 @@ public partial class FamilyMember : CharacterBody3D
 
 		GD.Print("We caught him!");
 		ScoreManager.Instance.Score.TimesCaught += 1;
-		// TODO(nemjit001): Restart level
+		body.Player.DropBiscuits(); // Just drop the biscuits
 	}
 
 	// Handle possible louie sighting

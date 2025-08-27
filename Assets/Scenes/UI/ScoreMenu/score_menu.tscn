@@ -12,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_kg2xe")
 script = ExtResource("2_gm00y")
-MainMenuScenePath = "uid://dc1aphmew1t7j"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
