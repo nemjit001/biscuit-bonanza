@@ -19,8 +19,8 @@ public partial class Biscuits : Node3D
 	{
 		if (node.IsInGroup(LOUIE_GROUP))
 		{
-			Player player = (Player)node;
-			player.ActivateObject += OnActivateObject;
+			PlayerBody body = (PlayerBody)node;
+			body.Player.ActivateObject += OnActivateObject;
 		}
 	}
 
@@ -28,8 +28,8 @@ public partial class Biscuits : Node3D
     {
         if (node.IsInGroup(LOUIE_GROUP))
         {
-            Player player = (Player)node;
-			player.ActivateObject -= OnActivateObject;
+            PlayerBody body = (PlayerBody)node;
+            body.Player.ActivateObject -= OnActivateObject;
         }
     }
 

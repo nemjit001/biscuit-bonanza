@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : CharacterBody3D
+public partial class Player : Node3D
 {
     const string MOVE_LEFT		= "move_left";
     const string MOVE_RIGHT		= "move_right";
@@ -14,18 +14,20 @@ public partial class Player : CharacterBody3D
     public delegate void ActivateObjectEventHandler(Player player);
 
     [Export]
-    public float Gravity = 9.81F;
+    public float CameraFollowSpeed = 5.0F;
 
-    [Export]
-    public float MoveSpeed = 500.0F;
-
-    PackedScene _ItemScene = null;
     Vector3 _CurrMoveDirection = Vector3.Zero;
-    Node3D _Pivot = null;
+    PlayerBody _PlayerBody = null;
+    Marker3D _CameraPivot = null;
+    PackedScene _ItemScene = null;
 
     public override void _Ready()
     {
-        _Pivot = GetNode<Node3D>("Pivot");
+        _PlayerBody = GetNode<PlayerBody>("PlayerBody");
+        _CameraPivot = GetNode<Marker3D>("CameraPivot");
+
+        _PlayerBody.Initialize(this);
+
         GD.Print("Player Ready!");
     }
 
@@ -44,18 +46,14 @@ public partial class Player : CharacterBody3D
             DropBiscuits();
         }
 
-        // Update player rotation
-        UpdateRotation();
+        // Forward movement direction
+        _PlayerBody.SetMoveDirection(_CurrMoveDirection);
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        // Apply move velocity & gravity
-        Velocity = _CurrMoveDirection * MoveSpeed * (float)(delta);
-        Velocity += Vector3.Down * Gravity * 1_000.0F * (float)(delta);
-
-        // Update position
-        MoveAndSlide();
+        // Follow camera
+        _CameraPivot.GlobalPosition = _CameraPivot.GlobalPosition.Lerp(_PlayerBody.GlobalPosition, CameraFollowSpeed * (float)delta);
     }
 
     public void CollectBiscuits(Biscuits biscuits)
@@ -75,7 +73,7 @@ public partial class Player : CharacterBody3D
         }
 
         Biscuits biscuits = _ItemScene.Instantiate<Biscuits>();
-        biscuits.Position = Position;
+        biscuits.Position = _CameraPivot.Position;
 
         Node3D root = GetOwner<Node3D>();
         root.AddChild(biscuits);
@@ -97,13 +95,5 @@ public partial class Player : CharacterBody3D
         }
 
         return MoveDirection;
-    }
-
-    private void UpdateRotation()
-    {
-        // TODO(nemjit001): Rotate towards move direction instead of snapping
-        if (_CurrMoveDirection != Vector3.Zero) {
-            _Pivot.Basis = Basis.LookingAt(_CurrMoveDirection, Vector3.Up);
-        }
     }
 }

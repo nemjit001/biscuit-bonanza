@@ -1,16 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm7j8q1bgrfa1"]
+[gd_scene load_steps=7 format=3 uid="uid://bm7j8q1bgrfa1"]
 
 [ext_resource type="Script" uid="uid://dgv1fm2ixykxq" path="res://Assets/Scenes/Characters/Player/Player.cs" id="1_3etf2"]
 [ext_resource type="PackedScene" uid="uid://b1wc48rq058no" path="res://Assets/Scenes/UI/PauseMenu/pause_menu.tscn" id="2_btlrb"]
-[ext_resource type="Material" uid="uid://cesmoh0kmadqw" path="res://Assets/Characters/Player/player.material" id="2_lyjr2"]
+[ext_resource type="PackedScene" uid="uid://v4f80mffn037" path="res://Assets/Characters/Player/louie.glb" id="3_btlrb"]
+[ext_resource type="Script" uid="uid://c22rylej8j0yp" path="res://Assets/Scenes/Characters/Player/PlayerBody.cs" id="3_fegeg"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_j6hkg"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_btlrb"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_lyjr2"]
-radius = 0.75
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_btlrb"]
 
-[node name="Player" type="CharacterBody3D" groups=["louie"]]
-collision_layer = 15
+[node name="Player" type="Node3D"]
 script = ExtResource("1_3etf2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -26,13 +25,17 @@ current = true
 near = 0.1
 far = 500.0
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="PlayerBody" type="CharacterBody3D" parent="." groups=["louie"]]
+collision_layer = 15
+collision_mask = 13
+script = ExtResource("3_fegeg")
 
-[node name="CharacterMesh" type="MeshInstance3D" parent="Pivot"]
+[node name="louie" parent="PlayerBody" instance=ExtResource("3_btlrb")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.5, 0)
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_j6hkg")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_lyjr2")
+shape = SubResource("CapsuleShape3D_btlrb")
 
-[node name="CharacterCollision" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_lyjr2")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerBody/PlayerCollision"]
+mesh = SubResource("CapsuleMesh_btlrb")

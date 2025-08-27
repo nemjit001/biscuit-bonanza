@@ -5,8 +5,14 @@ public partial class FamilyMember : CharacterBody3D
 {
 	const string LOUIE_GROUP = "louie";
 
-	[Export] public float MoveSpeed = 500.0F;
-	[Export] public float Gravity = 9.81F;
+	[Export]
+	public float MoveSpeed = 500.0F;
+
+	[Export]
+	public float Gravity = 9.81F;
+
+	[Export]
+	public float ChaseDuration = 10.0F;
 
 	Vector3 _CurrMoveDirection = Vector3.Zero;
 
@@ -14,6 +20,7 @@ public partial class FamilyMember : CharacterBody3D
     Vector3 _ChaseTarget = Vector3.Zero;
 
     Node3D _Pivot = null;
+	Timer _ChaseTimer = null;
 	NavigationAgent3D _NavAgent = null;
 	RayCastSearch _LouieSearch = null;
 
@@ -24,7 +31,10 @@ public partial class FamilyMember : CharacterBody3D
 
 		_Pivot = GetNode<Node3D>("Pivot");
 
-		_NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
+        _ChaseTimer = GetNode<Timer>("ChaseTimer");
+        _ChaseTimer.Timeout += OnChaseEnd;
+
+        _NavAgent = GetNode<NavigationAgent3D>("NavigationAgent3D");
 		_NavAgent.VelocityComputed += OnVelocityComputed;
 
 		_LouieSearch = GetNode<RayCastSearch>("Pivot/RayCastSearch");
@@ -69,9 +79,8 @@ public partial class FamilyMember : CharacterBody3D
 			return;
 		}
 
-        GD.Print("Did we catch him?");
-        Player player = (Player)node;
-		if (!player.HasBiscuits()) {
+        PlayerBody body = (PlayerBody)node;
+		if (!body.Player.HasBiscuits()) {
 			return;
 		}
 
@@ -87,16 +96,21 @@ public partial class FamilyMember : CharacterBody3D
 			return;
 		}
 
-        GD.Print($"Does he have the biscuits?");
-        Player player = (Player)target;
-        if (!player.HasBiscuits()) { // Don't chase if they don't have biscuits
-			_IsChasing = false;
+        PlayerBody body = (PlayerBody)target;
+        if (!body.Player.HasBiscuits()) { // Don't chase if they don't have biscuits
             return;
 		}
 
 		GD.Print($"We see him with the biscuits!");
 		_IsChasing = true;
         _ChaseTarget = target.GlobalPosition;
+		_ChaseTimer.Start(ChaseDuration);
+	}
+
+	public void OnChaseEnd()
+	{
+		_IsChasing = false;
+		_ChaseTarget = Vector3.Zero;
 	}
 
 	private void UpdateNavigation(double delta)
