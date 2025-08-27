@@ -4,9 +4,6 @@ using System;
 public partial class PlayerBody : CharacterBody3D
 {
     [Export]
-    public float Gravity = 9.81F;
-
-    [Export]
     public float MoveSpeed = 500.0F;
 
     [Export]
@@ -19,8 +16,8 @@ public partial class PlayerBody : CharacterBody3D
     public override void _PhysicsProcess(double delta)
     {
         // Apply move velocity & gravity
-        Velocity = _CurrMoveDirection * MoveSpeed * (float)(delta);
-        Velocity += Vector3.Down * Gravity * 1_000.0F * (float)(delta);
+        Velocity = _CurrMoveDirection * MoveSpeed * (float)delta;
+        Velocity += GetGravity();
 
         // Update rotation
         if (_CurrMoveDirection != Vector3.Zero) {

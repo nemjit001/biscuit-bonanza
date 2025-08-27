@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5rhmhkb7kfd7"]
+[gd_scene load_steps=18 format=3 uid="uid://5rhmhkb7kfd7"]
 
 [ext_resource type="Environment" uid="uid://nbcy8qq0apc0" path="res://Assets/Scenes/environment.tres" id="1_bhd3g"]
 [ext_resource type="PackedScene" uid="uid://bm7j8q1bgrfa1" path="res://Assets/Scenes/Characters/Player/player.tscn" id="2_um7u5"]
@@ -8,20 +8,38 @@
 [ext_resource type="PackedScene" uid="uid://bqheedtstbakr" path="res://Assets/Scenes/Environment/DogHouse/dog_house.tscn" id="5_sbayc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7u77a"]
-size = Vector3(20, 2, 20)
+size = Vector3(20, 2, 40)
 
 [sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
-size = Vector3(20, 2, 20)
+size = Vector3(20, 2, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhd3g"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_um7u5"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_um7u5"]
+size = Vector3(20, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhd3g"]
+size = Vector3(20, 5, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_bo1nx"]
-size = Vector3(20, 5, 1)
+size = Vector3(40, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bo1nx"]
-size = Vector3(20, 5, 1)
+size = Vector3(40, 5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kxhqp"]
+size = Vector3(5, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kxhqp"]
+size = Vector3(5, 2, 2)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_um7u5"]
-vertices = PackedVector3Array(-9.5, 0.5, -6.75, -7, 0.5, -6.75, -7, 0.5, -7.5, -5, 0.5, -9, -5, 0.5, -9.5, -9.5, 0.5, -9.5, -3, 0.5, -7.5, 9.5, 0.5, -9.5, -5.5, 0.5, -5, -9.5, 0.5, 9.5, -4.5, 0.5, -5, -3, 0.5, -6.5, 9.5, 0.5, 9.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(3, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 9), PackedInt32Array(9, 8, 10), PackedInt32Array(11, 6, 7), PackedInt32Array(11, 7, 10), PackedInt32Array(10, 7, 12), PackedInt32Array(10, 12, 9)]
+vertices = PackedVector3Array(4.5, 0.5, -17.5, 6.5, 0.5, -18, 6.5, 0.5, -19.5, -9.5, 0.5, -19.5, 4.25, 0.5, -12, 4.75, 0.5, -14.75, -9.5, 0.5, -10.25, -1.25, 0.5, -11.25, -1.5, 0.5, -10.5, 7.75, 0.5, -17.75, 9.5, 0.5, -19.5, 8, 0.5, -15, 6.25, 0.5, -14.5, 4.75, 0.5, -11.75, 5.25, 0.5, -10, 9.5, 0.5, -8.75, 4.75, 0.5, -8.75, -0.75, 0.5, -8, -9.5, 0.5, 19.5, 9.5, 0.5, 19.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 7), PackedInt32Array(0, 7, 6), PackedInt32Array(0, 6, 3), PackedInt32Array(7, 8, 6), PackedInt32Array(1, 2, 9), PackedInt32Array(9, 2, 10), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 11, 15), PackedInt32Array(4, 5, 13), PackedInt32Array(13, 5, 12), PackedInt32Array(9, 10, 11), PackedInt32Array(11, 10, 15), PackedInt32Array(14, 15, 16), PackedInt32Array(8, 17, 6), PackedInt32Array(6, 17, 18), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 19), PackedInt32Array(17, 19, 18)]
 geometry_source_geometry_mode = 1
 
 [node name="Main" type="Node3D"]
@@ -48,22 +66,22 @@ mesh = SubResource("BoxMesh_jjgbg")
 skeleton = NodePath("../..")
 
 [node name="WallFront" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallFront"]
-mesh = SubResource("BoxMesh_bo1nx")
+mesh = SubResource("BoxMesh_bhd3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallFront"]
-shape = SubResource("BoxShape3D_bo1nx")
+shape = SubResource("BoxShape3D_um7u5")
 
 [node name="WallBack" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 20)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallBack"]
-mesh = SubResource("BoxMesh_bo1nx")
+mesh = SubResource("BoxMesh_um7u5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallBack"]
-shape = SubResource("BoxShape3D_bo1nx")
+shape = SubResource("BoxShape3D_bhd3g")
 
 [node name="WallRight" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 2, 0)
@@ -83,6 +101,21 @@ mesh = SubResource("BoxMesh_bo1nx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
 shape = SubResource("BoxShape3D_bo1nx")
 
+[node name="Obstacle" type="StaticBody3D" parent="." groups=["navigation_mesh_source_group"]]
+transform = Transform3D(0.983233, 0, 0.182356, 0, 1, 0, -0.182356, 0, 0.983233, 1.86019, 1, -10.0433)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle"]
+mesh = SubResource("BoxMesh_kxhqp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("BoxShape3D_kxhqp")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+height = 3.0
+vertices = PackedVector3Array(-2.5, 0, 1, -2.5, 0, -1, 2.5, 0, -1, 2.5, 0, 1)
+affect_navigation_mesh = true
+
 [node name="Player" parent="." instance=ExtResource("2_um7u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
@@ -96,7 +129,7 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7.47833)
 
 [node name="DogHouse" parent="." instance=ExtResource("5_sbayc")]
-transform = Transform3D(-0.707106, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707106, -5, 1, -7)
+transform = Transform3D(-0.996533, 0, -0.0831915, 0, 1, 0, 0.0831915, 0, -0.996533, 6.1914, 1, -16.2697)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_um7u5")

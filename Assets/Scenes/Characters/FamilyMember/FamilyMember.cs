@@ -5,11 +5,11 @@ public partial class FamilyMember : CharacterBody3D
 {
 	const string LOUIE_GROUP = "louie";
 
-	[Export]
+    [Export]
 	public float MoveSpeed = 500.0F;
 
-	[Export]
-	public float Gravity = 9.81F;
+    [Export]
+    public float RotationSpeed = 20.0F;
 
 	[Export]
 	public float ChaseDuration = 10.0F;
@@ -129,12 +129,12 @@ public partial class FamilyMember : CharacterBody3D
 
         // Update character rotation
         if (_CurrMoveDirection != Vector3.Zero) {
-            _Pivot.Basis = Basis.LookingAt(_CurrMoveDirection, Vector3.Up);
+            _Pivot.Quaternion = _Pivot.Quaternion.Slerp(Basis.LookingAt(_CurrMoveDirection, Vector3.Up).GetRotationQuaternion(), RotationSpeed * (float)delta);
         }
 
         // Update movement velocity
         Vector3 velocity = _CurrMoveDirection * MoveSpeed * (float)delta;
-        velocity += Vector3.Down * Gravity * 1_000.0F * (float)(delta);
+        velocity += GetGravity();
 
         if (_NavAgent.AvoidanceEnabled) {
             _NavAgent.Velocity = velocity;
