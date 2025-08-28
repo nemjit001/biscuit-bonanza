@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_btlrb"]
 
 [node name="Player" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500316, 0)
 script = ExtResource("1_3etf2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

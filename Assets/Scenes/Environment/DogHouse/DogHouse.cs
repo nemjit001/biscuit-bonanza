@@ -22,8 +22,6 @@ public partial class DogHouse : Node3D
 		if (_DeliveredCount == _TargetBiscuitCount)
 		{
 			// All biscuits collected!
-			// Save score and exit game
-			ScoreManager.Instance.Save();
 			GameManager.Instance.LoadScene(GameManager.Instance.Levels.ScoreScenePath);
 		}
     }

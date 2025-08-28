@@ -1,19 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cswp6gaw7xt6a"]
 
 [ext_resource type="Script" uid="uid://dpn1moepn3uiw" path="res://Assets/Scenes/Environment/Biscuits/Biscuits.cs" id="1_wufw1"]
-[ext_resource type="PackedScene" uid="uid://dvqofqxvkwyta" path="res://Assets/Environment/Biscuits/biscuits.glb" id="2_wufw1"]
+[ext_resource type="PackedScene" uid="uid://bnsf0ut8ebdvm" path="res://Assets/Environment/Biscuits/Biscuits.glb" id="2_wufw1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rcnya"]
-radius = 1.0
+radius = 0.75
 
 [node name="Biscuits" type="Node3D"]
 script = ExtResource("1_wufw1")
 
 [node name="biscuits" parent="." instance=ExtResource("2_wufw1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.00600088, 0)
 
 [node name="PickupArea" type="Area3D" parent="." groups=["biscuits"]]
 collision_layer = 6
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506001, 0)
 shape = SubResource("SphereShape3D_rcnya")

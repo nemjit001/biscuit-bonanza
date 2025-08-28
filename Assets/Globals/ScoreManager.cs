@@ -13,17 +13,28 @@ public partial class ScoreManager : Node
     public override void _Ready()
     {
         Instance = this;
+        ResetScore();
+
+    }
+
+    public void ResetScore()
+    {
         Score = new PlayerScore();
-        if (ResourceLoader.Exists(SAVE_GAME_FILE)) {
-            PrevScore = GD.Load<PlayerScore>(SAVE_GAME_FILE);
-        }
-        else {
-            PrevScore = new PlayerScore();
-        }
+        PrevScore = GetPreviousScore();
     }
 
     public void Save()
     {
         ResourceSaver.Save(Score, SAVE_GAME_FILE);
+    }
+
+    private PlayerScore GetPreviousScore()
+    {
+        if (ResourceLoader.Exists(SAVE_GAME_FILE))
+        {
+            return GD.Load<PlayerScore>(SAVE_GAME_FILE);
+        }
+        
+        return new PlayerScore();
     }
 }

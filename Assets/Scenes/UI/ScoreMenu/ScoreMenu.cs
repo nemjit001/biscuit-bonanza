@@ -10,12 +10,15 @@ public partial class ScoreMenu : Control
         Label biscuitsCollected = GetNode<Label>("MarginContainer/VBoxContainer/HScoreContainer/ScoreLabels/BiscuitsCollectedScore");
 
         timesCaught.Text = ScoreManager.Instance.Score.TimesCaught.ToString();
-        timesEscaped.Text = "0";
+        timesEscaped.Text = ScoreManager.Instance.Score.TimesEscaped.ToString();
         biscuitsCollected.Text = ScoreManager.Instance.Score.BiscuitsCollected.ToString();
     }
 
     public void OnQuitToMenuPressed()
     {
+        // Save score and go back to menu game
+        ScoreManager.Instance.Save();
+        ScoreManager.Instance.ResetScore();
         GameManager.Instance.LoadScene(GameManager.Instance.Levels.MainMenuScenePath);
     }
 }

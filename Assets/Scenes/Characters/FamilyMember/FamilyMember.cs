@@ -130,6 +130,7 @@ public partial class FamilyMember : CharacterBody3D
 	{
 		_IsChasing = false;
 		_ChaseTarget = Vector3.Zero;
+		ScoreManager.Instance.Score.TimesEscaped += 1;
     }
 
 	private void UpdateNavigation(double delta)
