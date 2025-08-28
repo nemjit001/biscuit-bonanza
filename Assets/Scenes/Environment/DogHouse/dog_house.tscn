@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqheedtstbakr"]
+[gd_scene load_steps=5 format=3 uid="uid://bqheedtstbakr"]
 
-[ext_resource type="Material" uid="uid://cakbatxuai6ck" path="res://Assets/Environment/DogHouse/dog_house.material" id="1_1rm74"]
 [ext_resource type="Script" uid="uid://dmnv1uqkkbd16" path="res://Assets/Scenes/Environment/DogHouse/DogHouse.cs" id="1_acl1l"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_jyit0"]
-size = Vector3(2, 2, 2)
+[ext_resource type="PackedScene" uid="uid://bu4hmj5ni2yua" path="res://Assets/Environment/DogHouse/DogHouse.glb" id="2_g4jrp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1rm74"]
 radius = 1.5
@@ -15,9 +12,8 @@ size = Vector3(2, 2, 2)
 [node name="DogHouse" type="Node3D" groups=["navigation_mesh_source_group"]]
 script = ExtResource("1_acl1l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_jyit0")
-surface_material_override/0 = ExtResource("1_1rm74")
+[node name="DogHouseMesh" parent="." instance=ExtResource("2_g4jrp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1, 0)
 
 [node name="DropArea" type="Area3D" parent="." groups=["doghouse"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
@@ -34,7 +30,7 @@ shape = SubResource("BoxShape3D_acl1l")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-height = 3.0
-vertices = PackedVector3Array(-1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1)
+height = 4.0
+vertices = PackedVector3Array(-1.4, 0, -1.25, 1.4, 0, -1.25, 1.4, 0, 1.25, -1.4, 0, 1.25)
 affect_navigation_mesh = true
 carve_navigation_mesh = true

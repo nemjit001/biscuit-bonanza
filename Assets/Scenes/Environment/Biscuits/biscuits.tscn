@@ -10,12 +10,11 @@ radius = 0.75
 script = ExtResource("1_wufw1")
 
 [node name="biscuits" parent="." instance=ExtResource("2_wufw1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.00600088, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.5, 0)
 
 [node name="PickupArea" type="Area3D" parent="." groups=["biscuits"]]
 collision_layer = 6
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506001, 0)
 shape = SubResource("SphereShape3D_rcnya")

@@ -38,8 +38,8 @@ size = Vector3(5, 2, 2)
 size = Vector3(5, 2, 2)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_um7u5"]
-vertices = PackedVector3Array(4.5, 0.5, -17.5, 6.5, 0.5, -18, 6.5, 0.5, -19.5, -9.5, 0.5, -19.5, 4.25, 0.5, -12, 4.75, 0.5, -14.75, -9.5, 0.5, -10.25, -1.25, 0.5, -11.25, -1.5, 0.5, -10.5, 7.75, 0.5, -17.75, 9.5, 0.5, -19.5, 8, 0.5, -15, 6.25, 0.5, -14.5, 4.75, 0.5, -11.75, 5.25, 0.5, -10, 9.5, 0.5, -8.75, 4.75, 0.5, -8.75, -9.5, 0.5, 4.75, -2.75, 0.5, 4.75, -2.5, 0.5, 3.25, -1.25, 0.5, -8.75, -1.25, 0.5, 2.75, -0.5, 0.5, -8, 3.5, 0.5, 4, 3.75, 0.5, 5, 9.5, 0.5, 5, -2.25, 0.5, 6.25, 2.75, 0.5, 19.5, 2.75, 0.5, 7.25, -9.5, 0.5, 19.5, 3.5, 0.5, 6.5, 9.5, 0.5, 19.5)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 7), PackedInt32Array(0, 7, 6), PackedInt32Array(0, 6, 3), PackedInt32Array(7, 8, 6), PackedInt32Array(1, 2, 9), PackedInt32Array(9, 2, 10), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 14), PackedInt32Array(14, 11, 15), PackedInt32Array(4, 5, 13), PackedInt32Array(13, 5, 12), PackedInt32Array(9, 10, 11), PackedInt32Array(11, 10, 15), PackedInt32Array(14, 15, 16), PackedInt32Array(19, 18, 17), PackedInt32Array(6, 8, 20), PackedInt32Array(19, 17, 21), PackedInt32Array(21, 17, 22), PackedInt32Array(22, 17, 20), PackedInt32Array(20, 17, 6), PackedInt32Array(25, 24, 23), PackedInt32Array(16, 15, 22), PackedInt32Array(22, 15, 21), PackedInt32Array(21, 15, 23), PackedInt32Array(23, 15, 25), PackedInt32Array(17, 18, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(17, 26, 29), PackedInt32Array(29, 26, 27), PackedInt32Array(30, 24, 25), PackedInt32Array(30, 25, 28), PackedInt32Array(28, 25, 27), PackedInt32Array(27, 25, 31)]
+vertices = PackedVector3Array(4.25, 0.5, -18, 5.5, 0.5, -18.75, 5.5, 0.5, -19.5, -9.5, 0.5, -19.5, 4.25, 0.5, -12, 5.25, 0.5, -14.75, 3.5, 0.5, -15.75, -1.25, 0.5, -11.25, 3.5, 0.5, -16.75, -9.5, 0.5, -10.25, -1.5, 0.5, -10.5, 6.5, 0.5, -13.75, 4.75, 0.5, -11.75, 9.5, 0.5, -19.5, 8.75, 0.5, -17, 9, 0.5, -16, 7.5, 0.5, -13.75, 5.25, 0.5, -10, 8, 0.5, -17, 9.5, 0.5, -8.75, 4.75, 0.5, -8.75, -9.5, 0.5, 4.75, -2.75, 0.5, 4.75, -2.5, 0.5, 3.25, -1.25, 0.5, -8.75, -1.25, 0.5, 2.75, -0.5, 0.5, -8, 3.5, 0.5, 4, 3.75, 0.5, 5, 9.5, 0.5, 5, -2.25, 0.5, 6.25, 2.75, 0.5, 19.5, 2.75, 0.5, 7.25, -9.5, 0.5, 19.5, 3.5, 0.5, 6.5, 9.5, 0.5, 19.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(8, 7, 0), PackedInt32Array(0, 7, 9), PackedInt32Array(0, 9, 3), PackedInt32Array(7, 8, 6), PackedInt32Array(7, 10, 9), PackedInt32Array(12, 4, 11), PackedInt32Array(11, 4, 5), PackedInt32Array(15, 14, 13), PackedInt32Array(11, 16, 12), PackedInt32Array(12, 16, 17), PackedInt32Array(14, 18, 13), PackedInt32Array(13, 18, 1), PackedInt32Array(13, 1, 2), PackedInt32Array(13, 19, 15), PackedInt32Array(20, 17, 19), PackedInt32Array(19, 17, 16), PackedInt32Array(19, 16, 15), PackedInt32Array(23, 22, 21), PackedInt32Array(9, 10, 24), PackedInt32Array(23, 21, 25), PackedInt32Array(25, 21, 26), PackedInt32Array(26, 21, 24), PackedInt32Array(24, 21, 9), PackedInt32Array(29, 28, 27), PackedInt32Array(20, 19, 26), PackedInt32Array(26, 19, 25), PackedInt32Array(25, 19, 27), PackedInt32Array(27, 19, 29), PackedInt32Array(21, 22, 30), PackedInt32Array(30, 32, 31), PackedInt32Array(21, 30, 33), PackedInt32Array(33, 30, 31), PackedInt32Array(34, 28, 29), PackedInt32Array(34, 29, 32), PackedInt32Array(32, 29, 31), PackedInt32Array(31, 29, 35)]
 geometry_source_geometry_mode = 1
 
 [node name="Main" type="Node3D"]
@@ -141,13 +141,13 @@ affect_navigation_mesh = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Biscuits" parent="." instance=ExtResource("4_au3s5")]
-transform = Transform3D(-0.169676, 0, -0.9855, 0, 1, 0, 0.9855, 0, -0.169676, -6.81901, 0, -4.94925)
+transform = Transform3D(-0.169676, 0, -0.9855, 0, 1, 0, 0.9855, 0, -0.169676, -6.81901, 0.5, -4.94925)
 
 [node name="Biscuits2" parent="." instance=ExtResource("4_au3s5")]
-transform = Transform3D(0.738008, 0, 0.674792, 0, 1, 0, -0.674792, 0, 0.738008, 6.821, 0, 15.309)
+transform = Transform3D(0.738008, 0, 0.674792, 0, 1, 0, -0.674792, 0, 0.738008, 6.821, 0.5, 15.309)
 
 [node name="Biscuits3" parent="." instance=ExtResource("4_au3s5")]
-transform = Transform3D(0.945661, 0, -0.325155, 0, 1, 0, 0.325155, 0, 0.945661, -6.54435, 0, 13.3992)
+transform = Transform3D(0.945661, 0, -0.325155, 0, 1, 0, 0.325155, 0, 0.945661, -6.54435, 0.5, 13.3992)
 
 [node name="FamilyMember" parent="." instance=ExtResource("5_7trpf")]
 transform = Transform3D(0.230865, 0, 0.972986, 0, 1, 0, -0.972986, 0, 0.230865, 6, 0, 0)
@@ -159,7 +159,7 @@ transform = Transform3D(-0.886938, 0, 0.461888, 0, 1, 0, -0.461888, 0, -0.886938
 transform = Transform3D(-0.861815, 0, -0.507223, 0, 1, 0, 0.507223, 0, -0.861815, -6.39704, 0, -15.809)
 
 [node name="DogHouse" parent="." instance=ExtResource("6_6e7at")]
-transform = Transform3D(-0.996533, 0, -0.0831915, 0, 1, 0, 0.0831915, 0, -0.996533, 6.1914, 1, -16.2697)
+transform = Transform3D(-0.832709, 0, 0.55371, 0, 1, 0, -0.55371, 0, -0.832709, 6.1914, 1, -16.2697)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_um7u5")
